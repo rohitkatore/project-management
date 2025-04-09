@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npx esbuild ./server.ts --bundle --platform=node --outfile=dist/server.js",
+    "prebuild": "mkdir -p dist",
+    "build": "npx --no-install esbuild ./server.ts --bundle --platform=node --outfile=dist/server.js",
     "start": "node dist/server.js",
     "dev": "npm run build && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +22,8 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "prisma": "^6.5.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
