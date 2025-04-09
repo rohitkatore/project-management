@@ -9,7 +9,6 @@
     "outDir": "./dist",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "types": ["node"],
     "lib": ["ES2020"],
     "sourceMap": true
   },
