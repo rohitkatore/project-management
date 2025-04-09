@@ -6,8 +6,8 @@ set -o errexit
 # Install dependencies including dev dependencies needed for build
 npm install
 
-# Generate Prisma client
-npx prisma generate --schema=./db/prisma/schema.prisma
+# Generate Prisma client - Fix permission issue
+node_modules/.bin/prisma generate --schema=./db/prisma/schema.prisma || npx --no-install prisma generate --schema=./db/prisma/schema.prisma
 
 # Run TypeScript compiler
 npm run build
