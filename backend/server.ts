@@ -5,5 +5,6 @@ const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 
 server.listen(port, () => {
-    console.log(`server is listening on port ${port}.`);
+    console.log(`Server is running on port ${port}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
