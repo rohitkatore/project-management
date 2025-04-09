@@ -1,3 +1,4 @@
+/// <reference path="../types.d.ts" />
 import express from "express";
 import { createProject, getProjects, addToCart, getCart, removeProject, deleteCart } from "../controllers/project.controller";
 const router = express.Router();
@@ -10,6 +11,6 @@ router.post("/project", createProject);
 // Cart routes
 router.post("/cart", addToCart);
 router.get("/cart", getCart);
-router.delete("/cart/:id",deleteCart);
+router.delete("/cart/:id", deleteCart);
 
 export default router;

@@ -1,6 +1,11 @@
+/// <reference types="node" />
 import { Request, Response } from 'express';
-import { PrismaClient } from "@prisma/client"
-const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client";
+
+// Create Prisma client instance
+const prisma = new PrismaClient({
+    log: ['error'], // Only log errors to prevent console noise
+});
 
 // Define interface for Project
 interface Project {
@@ -9,7 +14,7 @@ interface Project {
     description?: string;
     category: string;
     author: string;
-    image_url: string
+    image_url: string;
 }
 
 // Define interface for Cart Item
@@ -32,7 +37,11 @@ export const createProject = async (req: Request, res: Response) => {
                 image_url
             }
         });
-        console.log(project);
+        // Instead of console.log, use a safer approach
+        if (process.env.NODE_ENV !== 'production') {
+            // Only log in non-production environments
+            process.stdout.write(`Project created: ${JSON.stringify(project, null, 2)}\n`);
+        }
         res.status(201).json({ message: "Project created successfully." });
     } catch (err) {
         console.log(err);

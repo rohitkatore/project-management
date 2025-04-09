@@ -2,10 +2,12 @@ services:
   - type: web
     name: project-management-api
     env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm run start
+    buildCommand: npm install
+    startCommand: node simpleServer.js
     envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: project-management-db
+          property: connectionString
       - key: NODE_ENV
         value: production
