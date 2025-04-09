@@ -1,16 +1,16 @@
-import express from "express" ;
-import cors from "cors" ;
-import projectRoutes from "./routes/project.route"
-const app = express() ;
+import express, { Request, Response } from "express";
+import cors from "cors";
+import projectRoutes from "./routes/project.route";
+const app = express();
 
-app.use(express.json()) ;
-app.use(express.urlencoded({extended:true})) ;
-app.use(cors()) ;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-app.use("/",projectRoutes);
-app.get("/",(req,res)=>{
-    res.send("Hello from server.") ;
+app.use("/", projectRoutes);
+app.get("/", (req: Request, res: Response) => {
+    res.send("Hello from server.");
 });
 
-export default app ;
+export default app;
 

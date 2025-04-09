@@ -32,7 +32,7 @@ export const createProject = async (req: Request, res: Response) => {
                 image_url
             }
         });
-        console.log(project) ;
+        console.log(project);
         res.status(201).json({ message: "Project created successfully." });
     } catch (err) {
         console.log(err);
@@ -168,23 +168,23 @@ export const getCart = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
-export const deleteCart =async(req:Request,res:Response):Promise<void> =>{
-    const cartId = req.params.id ;
-    try{
+export const deleteCart = async (req: Request, res: Response): Promise<void> => {
+    const cartId = req.params.id;
+    try {
         const project = await prisma.cart.findUnique({
             where: { id: cartId }
         });
-        if(!project){
-            res.status(404).json({message:"cart item not found."});
-            return ;
+        if (!project) {
+            res.status(404).json({ message: "cart item not found." });
+            return;
         }
         await prisma.cart.delete({
             where: { id: cartId }
         });
-        res.status(201).json({message:"Cart item remove successfully."});
-    }catch(err){
-        console.log(err) ;
-        res.status(501).json({message:"Inernal Server error."}) ;
+        res.status(201).json({ message: "Cart item remove successfully." });
+    } catch (err) {
+        console.log(err);
+        res.status(501).json({ message: "Inernal Server error." });
     }
-}
+};
 
